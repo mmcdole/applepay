@@ -33,3 +33,11 @@ Decoded PCM SHA-256 for both source and WAV:
 `64f2399f55f10b21053de1829c046e4c86fa7ccc10b77403ae8a9d67fc65ec21`
 
 The source is a third-party archive, not an official Apple distribution. Apple's sound and trademarks remain Apple's property; this repository does not assert a Creative Commons license over them. This is an unofficial parody project, unaffiliated with Apple.
+
+## Search visibility
+
+The page sends a `robots` meta directive with `noindex, nofollow, noimageindex, nosnippet`. Cooperating search engines should omit it from search results. This is not access control: the site and repository remain public, and crawlers can still discover or fetch their URLs.
+
+A `robots.txt` in this project's subdirectory would not control crawling; crawlers only consult the domain-root file. Do not block the page there if you want crawlers to read its `noindex` directive.
+
+The project's Pages domain is inherited from the account's user site (`mattmcdole.com`). Hosting it on an unrelated address requires a separate hosting destination, another account/organization's Pages site, or a different custom domain.
