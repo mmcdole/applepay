@@ -4,7 +4,7 @@ A phone-sized, animated **simulation** of a Tap to Cash receiving moment. It inc
 
 ## Use
 
-Open the [live demo](https://mmcdole.github.io/applepay-prank/) on a phone. Tap **Set amount & timing** to choose an amount, reveal delay, and sound preference. Tap **Start prank**, then tap the screen to play the reveal. With a delay selected, the reveal starts automatically after the chosen time. Tap **Done** to reset.
+Open the [live demo](https://mattmcdole.com/applepay-prank/) on a phone. Tap **Set amount & timing** to choose an amount, reveal delay, and sound preference. Tap **Start prank**, then tap the screen to play the reveal. With a delay selected, the reveal starts automatically after the chosen time. Tap **Done** to reset.
 
 Sound must be enabled on the phone and started by a tap because mobile browsers block audio until user interaction. Add the website to your home screen for a more immersive full-screen view.
 
