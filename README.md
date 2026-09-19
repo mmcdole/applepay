@@ -2,7 +2,7 @@
 
 An unofficial visual joke inspired by Apple Cash. No money moves and no payment service is connected.
 
-[Open the site](https://mattmcdole.com/applepay-prank/?v=3).
+[Open the site](https://mattmcdole.com/applepay/).
 
 ## Use
 
