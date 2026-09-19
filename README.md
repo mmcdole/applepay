@@ -1,25 +1,35 @@
-# Tap to Cash prank demo
+# Tap to Cash prank
 
-A phone-sized, animated **simulation** of a Tap to Cash receiving moment. It includes a customizable amount, manual or timed reveal, a sampled payment chime, and optional vibration on supported phones. No payment is made, and the site does not connect to Apple or any payment service.
+An unofficial visual joke inspired by Apple Cash. No money moves and no payment service is connected.
+
+[Open the site](https://mattmcdole.com/applepay-prank/?v=3).
 
 ## Use
 
-Open the [live demo](https://mattmcdole.com/applepay-prank/) on a phone. Tap the **•••** menu to choose an amount, reveal delay, and sound preference. Tap **Receive**, then tap the screen to play the reveal. With a delay selected, the reveal starts automatically after the chosen time. Tap **Done** to reset.
+Open **••• → Settings** to set the amount, choose a tap or timed trigger, and preview the payment sound. **Done** saves changes; **Cancel** discards them. Tap **Continue** to arm the animation, then tap the screen or wait for the selected delay. The particles form the amount, followed by the received checkmark and sound. **Done** resets it.
 
-Sound must be enabled on the phone. The first tap unlocks audio because mobile browsers block sound until user interaction. In the **•••** menu, choose **Open full screen**. On iPhone, Safari does not allow a web page to enter full screen directly; use **Share → Add to Home Screen**, then open the new icon. The site includes a web app manifest and home screen icon for this.
+Audio loads and unlocks during the initial tap. A visible error appears if it cannot load. Use the phone's media volume for loudness. Muting sound in Settings disables it for the reveal; Preview sound still lets you audition it. Canceling or hiding an armed page cancels its pending reveal.
+
+## Full screen
+
+In supported browsers, **Settings → Open full screen** uses the browser's Fullscreen API. On iPhone Safari, the menu instead offers **Add to Home Screen** instructions: **Share → Add to Home Screen**, then launch the new icon. A website cannot force Safari on iPhone into the same full-screen mode as an installed web app.
 
 ## Develop
 
-This is plain HTML, CSS, and JavaScript with no build step. Serve the `site` directory locally, for example:
+Plain HTML, CSS, JavaScript and a WAV file; no production dependencies or build step:
 
 ```sh
 python3 -m http.server 8000 --directory site
 ```
 
-The [GitHub Actions workflow](.github/workflows/pages.yml) publishes `site/` to GitHub Pages on pushes to `main`. In repository Settings → Pages, select **GitHub Actions** as the build and deployment source if Pages has not been initialized.
+The [Pages workflow](.github/workflows/pages.yml) publishes `site/` on pushes to `main`. Versioned script and stylesheet URLs prevent previous revisions from being served from a browser's cache.
 
-This project is an unofficial parody/demo and is not affiliated with or endorsed by Apple. Apple Pay and Apple Cash are trademarks of Apple Inc.
+## Audio provenance
 
-## Audio credit
+`site/payment-success-ios.wav` contains the unaltered PCM audio from the archived iOS 18 `payment_success.caf` at [André Louis's phone-tone archive](http://onj3.andrelouis.com/phonetones/unzipped/Apple/iOS-18/System/Library/Audio/UISounds/payment_success.caf). It was converted from CAF to WAV without changing the samples: mono, 44,100 Hz, signed 16-bit PCM, 1.40746 seconds. No gain, pitch, speed, normalization, or effects are applied.
 
-The payment chime is from [Free Sounds Library](https://www.freesoundslibrary.com/apple-pay-sound-effect/), which publishes it under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The source describes it as an Apple Pay-style effect; its provenance as an original Apple system recording has not been independently verified.
+Decoded PCM SHA-256 for both source and WAV:
+
+`64f2399f55f10b21053de1829c046e4c86fa7ccc10b77403ae8a9d67fc65ec21`
+
+The source is a third-party archive, not an official Apple distribution. Apple's sound and trademarks remain Apple's property; this repository does not assert a Creative Commons license over them. This is an unofficial parody project, unaffiliated with Apple.
