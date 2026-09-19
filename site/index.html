@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050608">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="A playful, simulated Tap to Cash animation with sound. No money is transferred.">
+  <title>Tap to Cash — Prank Demo</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="app" id="app" data-state="ready">
+      <header class="topbar">
+        <button class="back-button" id="resetButton" type="button" aria-label="Reset animation"><span aria-hidden="true">‹</span> Wallet</button>
+        <span class="demo-pill">PRANK DEMO</span>
+        <button class="icon-button" id="settingsButton" type="button" aria-label="Open settings" aria-haspopup="dialog" aria-controls="settingsDialog"><span aria-hidden="true">•••</span></button>
+      </header>
+
+      <section class="experience" aria-live="polite">
+        <div class="screen ready-screen">
+          <div class="eyebrow">APPLE CASH</div>
+          <h1>Tap to Cash</h1>
+          <p class="lead">Bring your iPhone near another iPhone to receive money.</p>
+          <div class="proximity-art" aria-hidden="true">
+            <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit orbit-three"></span>
+            <div class="mini-phone left-phone"><span class="mini-island"></span><span class="mini-wallet"><svg class="mini-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.3 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.7-1.8-3.3-1.8-1.4-.2-2.7.8-3.4.8-.7 0-1.7-.8-2.9-.7-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.1.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7s1.7.7 2.9.7 1.9-1 2.6-2c.8-1.1 1.1-2.1 1.2-2.2-2.3-.9-2.7-3.6-1.7-5.2ZM15 5.7c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2-.5 2.8-1.3Z"/></svg></span></div>
+            <div class="mini-phone right-phone"><span class="mini-island"></span><span class="mini-wallet"><svg class="mini-apple" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.3 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.7-1.8-3.3-1.8-1.4-.2-2.7.8-3.4.8-.7 0-1.7-.8-2.9-.7-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.1.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7s1.7.7 2.9.7 1.9-1 2.6-2c.8-1.1 1.1-2.1 1.2-2.2-2.3-.9-2.7-3.6-1.7-5.2ZM15 5.7c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2-.5 2.8-1.3Z"/></svg></span></div>
+            <span class="spark spark-one">✦</span><span class="spark spark-two">✦</span>
+          </div>
+          <div class="ready-bottom"><p class="hint">A little movie magic. No payment is made.</p><button class="primary-button" id="startButton" type="button">Start prank</button><button class="text-button" id="readySettingsButton" type="button">Set amount & timing</button></div>
+        </div>
+
+        <div class="screen armed-screen">
+          <div class="eyebrow">READY TO RECEIVE</div>
+          <h2>Hold near a friend</h2>
+          <p class="lead">Tap anywhere to play the moment<span id="delayCopy">.</span></p>
+          <div class="cash-card" aria-hidden="true"><div class="card-glow"></div><div class="card-wordmark"><svg class="apple-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.3 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.7-1.8-3.3-1.8-1.4-.2-2.7.8-3.4.8-.7 0-1.7-.8-2.9-.7-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.1.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7s1.7.7 2.9.7 1.9-1 2.6-2c.8-1.1 1.1-2.1 1.2-2.2-2.3-.9-2.7-3.6-1.7-5.2ZM15 5.7c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2-.5 2.8-1.3Z"/></svg><span>Cash</span></div><span class="card-symbol">✺</span></div>
+          <div class="armed-bottom"><span class="pulse-dot"></span><span id="armedStatus">Waiting for your tap</span><button class="cancel-button" id="cancelButton" type="button">Cancel</button></div>
+        </div>
+
+        <div class="screen success-screen">
+          <div class="success-top">APPLE CASH <span>SIMULATION</span></div>
+          <div class="success-center"><div class="success-rings"><div class="check-circle"><svg class="check" viewBox="0 0 64 64" aria-hidden="true"><path d="M15 33.5 26.5 45 50 20"/></svg></div></div><h2 id="receivedAmount">$25.00</h2><p>Received</p></div>
+          <div class="success-bottom"><div class="success-detail"><span class="detail-icon">✺</span><span>Tap to Cash<br><small>Just now · Demo transaction</small></span><span class="detail-check">✓</span></div><button class="done-button" id="doneButton" type="button">Done</button><p class="simulation-note">Prank demo · No money transferred</p></div>
+        </div>
+      </section>
+      <div class="tap-overlay" id="tapOverlay" role="button" tabindex="0" aria-label="Play payment animation"></div>
+    </div>
+    <div class="desktop-caption">A tap-to-cash moment, made for fun.<br><span>Open on your phone for the full effect.</span></div>
+  </main>
+
+  <dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle">
+    <form method="dialog" id="settingsForm">
+      <div class="sheet-grabber" aria-hidden="true"></div>
+      <div class="settings-heading"><h2 id="settingsTitle">Set the scene</h2><button type="submit" class="close-button" aria-label="Close settings">×</button></div>
+      <label for="amountInput">Amount</label><div class="amount-field"><span>$</span><input id="amountInput" name="amount" type="number" inputmode="decimal" min="0.01" max="2000" step="0.01" value="25.00" required></div>
+      <label for="delaySelect">Auto-play after starting</label><select id="delaySelect" name="delay"><option value="0">Tap to trigger</option><option value="3">After 3 seconds</option><option value="5">After 5 seconds</option><option value="8">After 8 seconds</option></select>
+      <label class="switch-row" for="soundInput"><span>Play sound</span><input id="soundInput" name="sound" type="checkbox" checked><span class="switch-track" aria-hidden="true"></span></label>
+      <p class="settings-info">This is a visual joke. It does not connect to Apple Cash or transfer money.</p>
+      <button class="primary-button save-button" value="save" type="submit">Save settings</button>
+    </form>
+  </dialog>
+</body>
+</html>
